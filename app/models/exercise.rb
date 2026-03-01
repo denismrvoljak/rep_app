@@ -3,4 +3,7 @@ class Exercise < ApplicationRecord
   has_many :workouts, through: :workout_exercises
   has_many :exercise_tags
   has_many :tags, through: :exercise_tags
+
+  validates :name, presence: true
+  validates :name, uniqueness: true
 end
