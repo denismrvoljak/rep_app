@@ -1,8 +1,8 @@
 
-upper_body_exercises = ["Bench Press", "Overhead Press", "Dip"]
-upper_body_tags = ["push", "upper body", "compound"]
-lower_body_exercises = ["Squat", "Leg Press", "Romanian Deadlift"]
-lower_body_tags = ["legs", "lower body", "compound"]
+upper_body_exercises = [ "Bench Press", "Overhead Press", "Dip" ]
+upper_body_tags = [ "push", "upper body", "compound" ]
+lower_body_exercises = [ "Squat", "Leg Press", "Romanian Deadlift" ]
+lower_body_tags = [ "legs", "lower body", "compound" ]
 
 
 upper_body_exercises.each do |name|
@@ -38,9 +38,7 @@ WorkoutExercise.find_or_create_by!(workout: upper_body_1, exercise: dip, weight:
 WorkoutExercise.find_or_create_by!(workout: lower_body_1, exercise: squat, weight: 60, sets: 3, reps: 10)
 
 
-["push", "upper body"].each do |tag_name|
+[ "push", "upper body" ].each do |tag_name|
   tag = Tag.find_or_create_by!(name: tag_name)
   upper_body_1.tags << tag unless upper_body_1.tags.include?(tag)
 end
-
-
