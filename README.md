@@ -1,3 +1,5 @@
+> This is a work-in-progress project, where I try to learn Rails, and write all the code myself by hand ✍️
+
 # Rep App
 
 Minimalistic workout tracker. Built with Rails 8 + PostgreSQL.
