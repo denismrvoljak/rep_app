@@ -6,4 +6,17 @@ class WorkoutsController < ApplicationController
   def show
     @workout = Workout.find(params[:id])
   end
+
+  def new
+    @workout = Workout.new
+  end
+
+  def create
+    @workout = Workout.new(params.require(:workout).permit(:name, :date))
+    if @workout.save
+      redirect_to @workout
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
 end
