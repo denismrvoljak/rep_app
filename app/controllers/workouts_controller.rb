@@ -19,4 +19,17 @@ class WorkoutsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+
+  def edit
+    @workout = Workout.find(params[:id])
+  end
+
+  def update
+    @workout = Workout.find(params[:id])
+    if @workout.update(params.require(:workout).permit(:name, :date))
+      redirect_to @workout
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
 end
