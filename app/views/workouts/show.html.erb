@@ -1,5 +1,5 @@
 <h1> <%= @workout.name%> </h1>
-<%= link_to "Edit workout", edit_workout_path, class: "button" %>
+<%= link_to "Edit workout", edit_workout_path(@workout), class: "button" %>
 <ol>
   <% @workout.workout_exercises.each do |entry| %>
     <li><%= entry.exercise.name %></li>
@@ -10,4 +10,5 @@
       </ul>
   <% end %>
 </ol>
+<%= link_to "Delete workout", @workout, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
 <%= link_to "Back to workouts", workouts_path, class: "button" %>

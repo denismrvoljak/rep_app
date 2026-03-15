@@ -4,7 +4,13 @@ class WorkoutsController < ApplicationController
   end
 
   def show
-    @workout = Workout.find(params[:id])
+    @workout = find_workout
+  end
+
+  def destroy
+    @workout = find_workout
+    @workout.destroy
+    redirect_to workouts_path, notice:  "Workout deleted"
   end
 
   def new
@@ -12,7 +18,7 @@ class WorkoutsController < ApplicationController
   end
 
   def create
-    @workout = Workout.new(params.require(:workout).permit(:name, :date))
+    @workout = Workout.new(workout_params)
     if @workout.save
       redirect_to @workout
     else
@@ -21,15 +27,25 @@ class WorkoutsController < ApplicationController
   end
 
   def edit
-    @workout = Workout.find(params[:id])
+    @workout = find_workout
   end
 
   def update
-    @workout = Workout.find(params[:id])
-    if @workout.update(params.require(:workout).permit(:name, :date))
+    @workout = find_workout
+    if @workout.update(workout_params)
       redirect_to @workout
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  private
+
+  def find_workout
+    Workout.find(params[:id])
+  end
+
+  def workout_params
+    params.require(:workout).permit(:name, :date)
   end
 end
