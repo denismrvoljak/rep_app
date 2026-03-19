@@ -10,7 +10,7 @@ class WorkoutsController < ApplicationController
   def destroy
     @workout = find_workout
     @workout.destroy
-    redirect_to workouts_path, notice:  "Workout deleted"
+    redirect_to workouts_path, alert:  "Workout deleted"
   end
 
   def new
@@ -20,7 +20,7 @@ class WorkoutsController < ApplicationController
   def create
     @workout = Workout.new(workout_params)
     if @workout.save
-      redirect_to @workout
+      redirect_to @workout, notice: "Workout created"
     else
       render :new, status: :unprocessable_entity
     end
@@ -33,7 +33,7 @@ class WorkoutsController < ApplicationController
   def update
     @workout = find_workout
     if @workout.update(workout_params)
-      redirect_to @workout
+      redirect_to @workout, notice: "Workout updated"
     else
       render :edit, status: :unprocessable_entity
     end
@@ -46,6 +46,6 @@ class WorkoutsController < ApplicationController
   end
 
   def workout_params
-    params.require(:workout).permit(:name, :date)
+    params.require(:workout).permit(:name, :date, :notes)
   end
 end
