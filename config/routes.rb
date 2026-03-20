@@ -11,5 +11,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  resources :workouts
+
+  resources :workouts do
+    resources :workout_exercises, only: [ :create ]
+  end
 end
