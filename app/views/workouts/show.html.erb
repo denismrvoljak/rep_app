@@ -11,5 +11,24 @@
       </ul>
   <% end %>
 </ol>
-<%= link_to "Delete workout", @workout, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+
+<h2> Add exercise </h2>
+<%= form_with model: [@workout, WorkoutExercise.new] do |form| %>
+  <%= form.label :exercise_id, "Exercise" %>
+  <%= form.collection_select :exercise_id, Exercise.all, :id, :name %>
+
+  <%= form.label :weight %>
+  <%= form.text_field :weight %>
+
+  <%= form.label :sets %>
+  <%= form.text_field :sets %>
+
+  <%= form.label :reps %>
+  <%= form.text_field :reps %>
+  <%= form.submit "Add exercise" %>
+<% end %>
+
+<div class= "workout-actions">
+<%= link_to "Delete workout", @workout, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "button" %>
 <%= link_to "Back to workouts", workouts_path, class: "button" %>
+</div>

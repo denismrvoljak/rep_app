@@ -36,4 +36,6 @@
 	border: 1px solid #fecaca;
 }
 
-
+.workout-actions {
+	margin-top: 1rem; /* or 16px */
+}
