@@ -1,17 +1,12 @@
 <h1> <%= @workout.name%> </h1>
 <p> <%= @workout.notes%> </p>
 <%= link_to "Edit workout", edit_workout_path(@workout), class: "button" %>
-<ol>
-  <% @workout.workout_exercises.each do |entry| %>
-    <li><%= entry.exercise.name %></li>
-      <ul>
-        <li><%=entry.weight %></li>
-        <li><%=entry.sets %></li>
-        <li><%=entry.reps %></li>
-      </ul>
-  <% end %>
-</ol>
-
+<% @workout.workout_exercises.each do |entry| %>
+  <div class="exercise-entry">
+    <%= entry.exercise.name %>
+    <span><%= entry.weight %> · <%= entry.sets %> × <%= entry.reps %></span>
+  </div>
+<% end %>
 <h2> Add exercise </h2>
 <%= form_with model: [@workout, WorkoutExercise.new] do |form| %>
   <%= form.label :exercise_id, "Exercise" %>
@@ -28,7 +23,7 @@
   <%= form.submit "Add exercise" %>
 <% end %>
 
-<div class= "workout-actions">
+<div class="workout-actions">
 <%= link_to "Delete workout", @workout, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "button" %>
 <%= link_to "Back to workouts", workouts_path, class: "button" %>
 </div>

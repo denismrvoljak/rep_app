@@ -9,6 +9,12 @@
  * Consider organizing styles into separate files for maintainability.
  */
 
+body {
+	padding: 16px;
+	max-width: 600px;
+	margin: 0 auto;
+}
+
 .button {
 	background-color: #333;
 	color: white;
@@ -39,3 +45,10 @@
 .workout-actions {
 	margin-top: 1rem; /* or 16px */
 }
+
+.exercise-entry {
+	display: flex;
+	margin-top: 1rem;
+	justify-content: space-between;
+}
+
