@@ -9,15 +9,27 @@
  * Consider organizing styles into separate files for maintainability.
  */
 
+:root {
+	--bg: #2E3026;
+	--text: #E0DCD3;
+	--border: #E0DCD3;
+	--accent-blue: #3B82F6;
+	--accent-pink: #E94F89;
+	--text-on-accent: #FAFAFA;
+}
+
 body {
 	padding: 16px;
 	max-width: 600px;
 	margin: 0 auto;
+	color: var(--text);
+	background: var(--bg);
 }
 
 .button {
-	background-color: #333;
-	color: white;
+	background-color: var(--accent-blue);
+	color: var(--text-on-accent);
+	border: 1px solid var(--accent-blue);
 	padding: 8px 16px;
 	text-decoration: none;
 	border-radius: 4px;
@@ -26,18 +38,18 @@ body {
 .flash {
 	margin: 12px;
 	padding: 10px 12px;
-	border-radius 8px;
+	border-radius: 8px;
 	font-size: 14px;
 }
 
 .flash.notice {
-	backround: #ecfdf3;
+	background: #ecfdf3;
 	color: #065f46;
 	border: 1px solid #a7f3d0;
 }
 
 .flash.alert {
-	backround: #fef2f2;
+	background: #fef2f2;
 	color: #991b1b;
 	border: 1px solid #fecaca;
 }
@@ -51,4 +63,14 @@ body {
 	margin-top: 1rem;
 	justify-content: space-between;
 }
+
+.exercise-entry span { color: var(--accent-pink); }
+
+.exercise-form {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	padding: 1rem;
+}
+
 

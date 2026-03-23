@@ -4,25 +4,24 @@
 <% @workout.workout_exercises.each do |entry| %>
   <div class="exercise-entry">
     <%= entry.exercise.name %>
-    <span><%= entry.weight %> · <%= entry.sets %> × <%= entry.reps %></span>
+    <span><%= entry.weight %>kg · <%= entry.sets %> × <%= entry.reps %></span>
   </div>
 <% end %>
-<h2> Add exercise </h2>
-<%= form_with model: [@workout, WorkoutExercise.new] do |form| %>
-  <%= form.label :exercise_id, "Exercise" %>
-  <%= form.collection_select :exercise_id, Exercise.all, :id, :name %>
+<h3> Add exercise </h3>
+  <%= form_with model: [@workout, WorkoutExercise.new], class: "exercise-form" do |form| %>
+    <%= form.label :exercise_id, "Exercise" %>
+    <%= form.collection_select :exercise_id, Exercise.all, :id, :name %>
 
-  <%= form.label :weight %>
-  <%= form.text_field :weight %>
+    <%= form.label :weight %>
+    <%= form.text_field :weight %>
 
-  <%= form.label :sets %>
-  <%= form.text_field :sets %>
+    <%= form.label :sets %>
+    <%= form.text_field :sets %>
 
-  <%= form.label :reps %>
-  <%= form.text_field :reps %>
-  <%= form.submit "Add exercise" %>
-<% end %>
-
+    <%= form.label :reps %>
+    <%= form.text_field :reps %>
+    <%= form.submit "Add exercise", class: "button" %>
+  <% end %>
 <div class="workout-actions">
 <%= link_to "Delete workout", @workout, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "button" %>
 <%= link_to "Back to workouts", workouts_path, class: "button" %>
